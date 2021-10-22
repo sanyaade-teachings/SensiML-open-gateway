@@ -419,10 +419,10 @@ class BaseResultReaderMixin(object):
                             continue
                         result["timestap"] = time.time()
 
-                        if result["model"] == 1:
+                        if result["ModelNumber"] == 1:
                             start_delay = time.time()
 
-                        if start_delay and start_delay - time.time() < 2:
+                        if start_delay and time.time() - start_delay < 3:
                             print("Skip sending result due to delay.")
                             print(result)
                             continue
