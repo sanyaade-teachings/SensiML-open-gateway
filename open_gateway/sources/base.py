@@ -419,13 +419,15 @@ class BaseResultReaderMixin(object):
                             continue
                         result["timestap"] = time.time()
 
-                        if result["ModelNumber"] == 1:
-                            start_delay = time.time()
 
                         if start_delay and time.time() - start_delay < 3:
                             print("Skip sending result due to delay.")
                             print(result)
                             continue
+
+                        if result["ModelNumber"] == 1:
+                            start_delay = time.time()
+
 
                         print(result)
                         yield json.dumps(result) + "\n"
