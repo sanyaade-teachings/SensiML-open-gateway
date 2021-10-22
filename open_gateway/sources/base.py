@@ -388,6 +388,7 @@ class BaseResultReaderMixin(object):
             self.connect()
 
         index = self.rbuffer.get_latest_buffer()
+        start_delay = None
 
         while self.streaming:
 
@@ -417,6 +418,15 @@ class BaseResultReaderMixin(object):
                             print(e)
                             continue
                         result["timestap"] = time.time()
+
+                        if result["model"] == 1:
+                            start_delay = time.time()
+
+                        if start_delay and start_delay - time.time() < 2:
+                            print("Skip sending result due to delay.")
+                            print(result)
+                            continue
+
                         print(result)
                         yield json.dumps(result) + "\n"
 

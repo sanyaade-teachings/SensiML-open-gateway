@@ -6,7 +6,7 @@ import { Results } from "../Results";
 import { Record } from "../Record";
 
 import { useSelector } from "react-redux";
-import { selectClassImage } from "../../redux/selectors/classes"; 
+import { selectClassImage } from "../../redux/selectors/classes";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,11 +30,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     padding: "1rem",
     marginTop: "1rem",
-    minHeight: "350px",
+    minHeight: "750px",
+    minWidth: "750px"
   },
 
   classImage: {
-    width: "90%",
+    width: "95%",
   },
 
   section1: {
@@ -69,10 +70,6 @@ const TestMode = (props) => {
         </Grid>
       )}
       <Grid item xs={4}>
-        <Record
-          isCameraConnected={props.isCameraConnected}
-          isRecording={props.isRecording}
-        />
         <Paper className={classes.imageWrapperCard}>
           <Box className={classes.classImageWrapper}>
             { classImage ?
